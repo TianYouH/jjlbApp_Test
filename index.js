@@ -1,4 +1,7 @@
 import { AppRegistry } from 'react-native';
+
+import './app/Common/Global'
+
 import App from './App';
 
 console.ignoredYellowBox = ['Warning: BackAndroid is deprecated.  Please use BackHandler instead.',
