@@ -2,7 +2,7 @@
  * Created by Rabbit on 2017/11/3.
  */
 
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
@@ -60,51 +60,53 @@ class App extends Component {
     }
 
     render() {
-        <Router createReducer={reducerCreate}
-            getSceneStyle={getSceneStyle}
-            backAndroidHandler={onBackPress}
-        >
-            <Modal
-                hideNavBar
-                transitionConfig={() => ({ screenInterpolator: CardStackStyleInterpolator.forFadeFromBottomAndroid })}
+        return (
+            <Router createReducer={reducerCreate}
+                getSceneStyle={getSceneStyle}
+                backAndroidHandler={onBackPress}
             >
-                <Stack hideNavBar headerMode='screen' key="root">
-                    <Tabs
-                        key="tabbar"        // 唯一标识
-                        wrap={true}         // 自动使用自己的导航栏包装每个场景
-                        showLabel={false}   // 显示文字
-                        tabBarStyle={styles.tabBarStyle} // tabBar的样式
-                        swipeEnabled={false}// 是否可以滑动
-                        headerMode='screen' // 页面切换方式
-                        lazy={true}         // 是否默认渲染tabbar
-                        tabBarPosition={'bottom'}       // tabbar在顶部还是底部，iOS默认顶部，安卓默认顶部
-                        activeBackgroundColor='white'   // 选中tabbar的背景色
-                        inactiveBackgroundColor='white' // 未选中tabbar的背景色
-                        activeTintColor='#4ECBFC'       // 选中tabbar图标的颜色
-                        inactiveTintColor='#aaa'        // 未选中tabbar图标的颜色
-                    >
-                        <Stack key="Test1"
-                            title={'huang'}
+                <Modal
+                    hideNavBar
+                    transitionConfig={() => ({ screenInterpolator: CardStackStyleInterpolator.forFadeFromBottomAndroid })}
+                >
+                    <Stack hideNavBar headerMode='screen' key="root">
+                        <Tabs
+                            key="tabbar"        // 唯一标识
+                            wrap={true}         // 自动使用自己的导航栏包装每个场景
+                            showLabel={false}   // 显示文字
+                            tabBarStyle={styles.tabBarStyle} // tabBar的样式
+                            swipeEnabled={false}// 是否可以滑动
+                            headerMode='screen' // 页面切换方式
+                            lazy={true}         // 是否默认渲染tabbar
+                            tabBarPosition={'bottom'}       // tabbar在顶部还是底部，iOS默认顶部，安卓默认顶部
+                            activeBackgroundColor='white'   // 选中tabbar的背景色
+                            inactiveBackgroundColor='white' // 未选中tabbar的背景色
+                            activeTintColor='#4ECBFC'       // 选中tabbar图标的颜色
+                            inactiveTintColor='#aaa'        // 未选中tabbar图标的颜色
                         >
-                            <Scene component={Test1} key="Test1_key" />
-                        </Stack>
-                        <Stack key='Test2'
-                            title='jin'
-                        >
-                            <Scene component={Test2} key="Test2_key" />
-                        </Stack>
-                        <Stack key="Test3"
-                            title='我的'
-                        >
-                            <Scene component={Test3} key="Test3_key" />
-                        </Stack>
-                    </Tabs>
+                            <Stack key="Test1"
+                                title={'huang'}
+                            >
+                                <Scene component={Test1} key="Test1_key" />
+                            </Stack>
+                            <Stack key='Test2'
+                                title='jin'
+                            >
+                                <Scene component={Test2} key="Test2_key" />
+                            </Stack>
+                            <Stack key="Test3"
+                                title='我的'
+                            >
+                                <Scene component={Test3} key="Test3_key" />
+                            </Stack>
+                        </Tabs>
 
-                    <Scene component={Test3} key="Test3_key" />
-                </Stack>
+                        <Scene component={Test3} key="Test3_key" />
+                    </Stack>
 
-            </Modal>
-        </Router>
+                </Modal>
+            </Router>
+        )
     }
 }
 
