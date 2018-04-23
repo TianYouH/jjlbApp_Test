@@ -35,14 +35,12 @@ import Test4 from './Pages/Test4';
 const reducerCreate = params => {
     const defaultReducer = new Reducer(params);
     return (state, action) => {
-        // console.log('ACTION:',action,Actions.currentScene)
-        // console.log('Actions:', Actions);
         return defaultReducer(state, action);
     };
 };
 
 const getSceneStyle = () => ({
-    backgroundColor: 'red',
+    backgroundColor: '#dfdfdf',
     // shadowOpacity: 1,
     // shadowRadius: 3,
 });
@@ -96,16 +94,16 @@ const router = (...props) => (
                         <Scene component={Test3} key="Test3_key" />
                     </Stack>
                 </Tabs>
-    
+
                 <Scene component={Test3} key="Test3_key" />
             </Stack>
 
         </Modal>
     </Router>
 );
-                            
+
 export default router;
-                            
+
 const styles = StyleSheet.create({
     tabBarStyle: {
         backgroundColor: '#eee',
