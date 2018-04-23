@@ -1,8 +1,8 @@
 import { AppRegistry } from 'react-native';
 
-import './app/Common/Global'
+import './app/common/Global'
 
-import App from './App';
+import App from './app/router';
 
 console.ignoredYellowBox = ['Warning: BackAndroid is deprecated.  Please use BackHandler instead.',
     'source.uri should not be an empty string','Remote debugger is in a background tab which',
