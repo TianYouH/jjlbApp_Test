@@ -7,7 +7,7 @@ import {
     Image,
 } from 'react-native';
 
-export default class Test2 extends Component {
+export default class Test4 extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -16,7 +16,7 @@ export default class Test2 extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>点我222</Text>
+                <Text>点我</Text>
             </View>
         );
     }

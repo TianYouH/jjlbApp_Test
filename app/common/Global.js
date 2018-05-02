@@ -2,18 +2,15 @@
 import React, { Component } from 'react';
 import { Dimensions, AsyncStorage, PixelRatio, Platform, Alert } from 'react-native';
 
-// 统一管理项目中的路由
-import { Actions } from "react-native-router-flux";
-
 // 处理安卓，iOS字体不同的类，使用方法 fontSize:FONT_SIZE(20)
-import FontSize from './FontSize';
+import FontSize from './fontSize';
 // 处理安卓，iOS宽高的区别，使用方法 width:px2dp(20)
-import { px2dp } from './Tool';
+import { px2dp } from './tool';
 
-// 基于react-native-fetch-blob封装的网络请求
-import RTRequest from './Request';
 // 配置文件，可以放网络请求等
-import Config from './Config';
+import Config from './config';
+
+import axios from './http'
 
 // 通过系统API获得屏幕宽高
 let { height, width } = Dimensions.get('window');
@@ -34,13 +31,9 @@ global.pixel = 1 / PixelRatio;
 global.FONT_SIZE = FontSize;
 // 屏幕适配
 global.px2dp = px2dp;
-// 网络请求
-global.RTRequest = RTRequest;
-// 配置
-global.Config = Config;
-// router跳转的方法
-global.Actions = Actions;
 // 弹出框
 global.Alert = Alert;
 // 存储
 global.AsyncStorage = AsyncStorage;
+// 网络
+global.axios = axios;
