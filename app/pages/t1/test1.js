@@ -7,6 +7,8 @@ import {
     Image,
 } from 'react-native';
 
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 export class Test1 extends Component {
 
     //导航栏数据配置
@@ -24,6 +26,9 @@ export class Test1 extends Component {
         return (
             <View style={styles.container}>
                 <Text>点我</Text>
+                <FontAwesome.Button name="facebook" backgroundColor="#3b5998" >
+                    <Text style={{fontFamily: 'Arial', fontSize: 15}}>你好世界</Text>
+                </FontAwesome.Button>
             </View>
         );
     }
