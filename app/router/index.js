@@ -13,6 +13,7 @@ import {
 import stores from '../mobx'
 import {
     StyleSheet,
+    Platform,
     Text,
     View,
     BackHandler,
@@ -21,7 +22,8 @@ import {
 } from 'react-native';
 
 import {
-    TabNavigation
+    TabNavigator,
+    StackNavigator
 } from 'react-navigation';
 
 import {
@@ -40,26 +42,20 @@ import {
 const TabScreen = observer(TabNavigator({
     T1: {
         screen: Test1,
-        title: '首页',
         path: 'T1'
     },
     T2: {
         screen: Test2,
-        title: '首页2',
         path: 'T2'
     },
     T3: {
         screen: Test3,
-        title: '首页3',
         path: 'T3'
     },
     T4: {
         screen: Test4,
-        title: '个人中心',
-        path: 'T4',
-
+        path: 'T4'
     }
-
 }, {
     animationEnabled: true,
     tabBarPosition: 'bottom',
@@ -83,7 +79,7 @@ const TabScreen = observer(TabNavigator({
 }));
 
 const MainScreen = StackNavigator({
-    'Home': {
+    Home: {
         screen: TabScreen
     }
 }, {
@@ -101,14 +97,12 @@ class App extends Component {
     }
 
     componentWillMount() {
-        stores.appstore.init(this).then(() => {
-            console.log('初始化完成')
-        })
+        stores.appstore.init()
     }
     componentDidMount() {}
     componentWillUnmount() {}
     render() {
-        return ( <Provider { ...stores } >
+        return ( < Provider { ...stores } >
                     < MainScreen />
                 </Provider>
             )

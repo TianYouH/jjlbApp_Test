@@ -1,6 +1,6 @@
 import { AppRegistry } from 'react-native';
 
-import './app/common/Global';
+import './app/common/global';
 
 import App from './app/router';
 

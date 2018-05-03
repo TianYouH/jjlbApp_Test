@@ -7,7 +7,14 @@ import {
     Image,
 } from 'react-native';
 
-export default class Test4 extends Component {
+export class Test4 extends Component {
+
+    //导航栏数据配置
+    static navigationOptions = {
+        header: null,
+        tabBarLabel: "首页4"
+    }    
+
     constructor(props) {
         super(props);
         this.state = {};

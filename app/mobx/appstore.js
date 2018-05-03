@@ -20,8 +20,8 @@ export default class ObservableIntroStore {
     @observable themeColor = "#7db1fa"
 
     @action
-    init = () => {
-        try {
-         this.userInfo.name = '黄金闪闪'
-        }
+    init(window) {
+        this.userInfo.name = '黄金闪闪'
+        console.log('初始化mobx')
     }
+}
