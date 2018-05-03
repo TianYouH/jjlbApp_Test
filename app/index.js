@@ -7,31 +7,29 @@ import React, {
 } from 'react';
 import {
     observer,
-    Provider
+    Provider,
+    inject
 } from 'mobx-react/native'
-import stores from '../mobx'
 import {
     StyleSheet,
     Platform,
+    Text,
+    View,
+    BackHandler,
+    StatusBar,
+    DeviceEventEmitter
 } from 'react-native';
-
-// import Router from './router';
 
 import {
     TabNavigator,
     StackNavigator
 } from 'react-navigation';
 
-import { Test1 } from "./pages/t1";
-import {
-    Test2
-} from './pages/t2';
-import {
-    Test3
-} from './pages/t3';
-import {
-    Test4
-} from './pages/t4';
+import stores from './mobx'
+import Test1 from './pages/t1/test1';
+import Test2 from './pages/t2/test2';
+import Test3 from './pages/t3/test3';
+import Test4 from './pages/t4/test4';
 
 const TabScreen = TabNavigator({
     T1: {
@@ -51,14 +49,22 @@ const TabScreen = TabNavigator({
         path: 'T4'
     }
 }, {
-    animationEnabled: true, //改变标签时是否进行动画
-    tabBarPosition: 'bottom', //标签栏的位置，可选'top'或'bottom'。
-    swipeEnabled: false, //是否允许在标签之间滑动
+    animationEnabled: true,
+    tabBarPosition: 'bottom',
+    headerMode: 'screen',
+    swipeEnabled: false,
     tabBarOptions: {
-        showIcon: true, //是否显示标签图标。
-        activeTintColor: Platform.OS === 'ios' ? '#e91e63' : '#fff', //活动选项卡的标签图标颜色
-        inactiveTintColor: '#dfdfdf', //非活动选项卡的标签图标颜色
+        showIcon: true,
+        activeTintColor: Platform.OS === 'ios' ? '#e91e63' : '#fff',
+        inactiveTintColor: '#dfdfdf',
+        indicatorStyle: {
+            opacity: 0
+        },
+        labelStyle: {
+            fontSize: 10
+        },
         style: {
+            height: 50,
             backgroundColor: stores.appstore.themeColor
         }
     }
@@ -69,21 +75,27 @@ const MainScreen = StackNavigator({
         screen: TabScreen
     }
 }, {
-    initialRouteName: "TabScreen",
+    headerMode: 'screen',
 });
 
 @observer
-export default class App extends Component {
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: false,
+        }
 
+    }
     componentWillMount() {
         stores.appstore.init()
     }
-
     render() {
-        return ( 
-            <Provider {...stores}>
-                <MainScreen />
-            </Provider> 
+        return ( < Provider { ...stores } >
+                    < MainScreen />
+                </Provider>
             )
     }
 }
+
+export default App
