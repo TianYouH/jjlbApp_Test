@@ -7,7 +7,7 @@ import {
     Image,
 } from 'react-native';
 
-export class Test3 extends Component {
+export default class Test3 extends Component {
 
     //导航栏数据配置
     static  navigationOptions = {
