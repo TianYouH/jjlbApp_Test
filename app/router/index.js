@@ -108,14 +108,10 @@ class App extends Component {
     componentDidMount() {}
     componentWillUnmount() {}
     render() {
-        return ( <
-            Provider { ...stores
-            } >
-            <
-            MainScreen / >
-            <
-            /Provider>
-        )
+        return ( <Provider { ...stores } >
+                    < MainScreen />
+                </Provider>
+            )
     }
 }
 
