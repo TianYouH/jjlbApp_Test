@@ -57,22 +57,14 @@ const TabScreen = observer(TabNavigator({
         path: 'T4'
     }
 }, {
-    animationEnabled: true,
-    tabBarPosition: 'bottom',
-    headerMode: 'screen',
-    swipeEnabled: false,
+    animationEnabled: true, //改变标签时是否进行动画
+    tabBarPosition: 'bottom', //标签栏的位置，可选'top'或'bottom'。
+    swipeEnabled: false, //是否允许在标签之间滑动
     tabBarOptions: {
-        showIcon: true,
-        activeTintColor: Platform.OS === 'ios' ? '#e91e63' : '#fff',
-        inactiveTintColor: '#dfdfdf',
-        indicatorStyle: {
-            opacity: 0
-        },
-        labelStyle: {
-            fontSize: 10
-        },
+        showIcon: true, //是否显示标签图标。
+        activeTintColor: Platform.OS === 'ios' ? '#e91e63' : '#fff', //活动选项卡的标签图标颜色
+        inactiveTintColor: '#dfdfdf', //非活动选项卡的标签图标颜色
         style: {
-            height: 50,
             backgroundColor: stores.appstore.themeColor
         }
     }
