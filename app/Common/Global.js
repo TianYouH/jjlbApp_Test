@@ -7,9 +7,6 @@ import FontSize from './fontSize';
 // 处理安卓，iOS宽高的区别，使用方法 width:px2dp(20)
 import { px2dp } from './tool';
 
-// 配置文件，可以放网络请求等
-import Config from './config';
-
 import axios from './http'
 
 // 通过系统API获得屏幕宽高

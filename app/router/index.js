@@ -1,39 +1,96 @@
-import React, { Component } from 'react';
-import { BackHandler, ToastAndroid } from "react-native";
-import { addNavigationHelpers, NavigationActions } from 'react-navigation';
-import MainScreen from './router';
+import {
+    Platform
+} from 'react-native';
 
-export default class Router extends Component {
-  componentDidMount() {
-    BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
-  }
+import {
+    TabNavigator,
+    StackNavigator
+} from 'react-navigation';
 
-  componentWillUnmount() {
-    BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
-    this.lastBackPressed = null
-  }
+import {
+    Test1
+} from "../pages/t1";
+import {
+    Test2
+} from '../pages/t2';
+import {
+    Test3
+} from '../pages/t3';
+import {
+    Test4
+} from '../pages/t4';
+import {
+    Huang
+} from "../pages/other";
+import {
+    RouteConfigs,
+    TabNavigatorConfig,
+    StackNavigatorConfig
+} from "../common/config";
 
-  onBackPress = () => {
-    const { dispatch, nav } = this.props;
-    if (nav.index === 0) {
-      if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
-        return false;
-      }
-      this.lastBackPressed = Date.now();
-      ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT);
+
+const TabScreen = TabNavigator({
+        T1: {
+            screen: Test1,
+            path: 'T1',
+            navigationOptions: props => {
+                return RouteConfigs({
+                    iconame: "ios-home",
+                    label: '首页',
+                    props,
+                })
+            }
+        },
+        T2: {
+            screen: Test2,
+            path: 'T2',
+            navigationOptions: props => {
+                return RouteConfigs({
+                    iconame: "ios-planet",
+                    label: '首页2',
+                    props,
+                })
+            }
+        },
+        T3: {
+            screen: Test3,
+            path: 'T3',
+            navigationOptions: props => {
+                return RouteConfigs({
+                    iconame: "ios-analytics",
+                    label: '首页3',
+                    props,
+                })
+            }
+        },
+        T4: {
+            screen: Test4,
+            path: 'T4',
+            navigationOptions: props => {
+                return RouteConfigs({
+                    iconame: "ios-contacts",
+                    label: '首页4',
+                    props,
+                })
+            }
+        }
+    },
+    TabNavigatorConfig({
+        initialRouteName: "T1",
+    })
+);
+
+const MainScreen = StackNavigator({
+    Home: {
+        screen: TabScreen
+    },
+    Huang: {
+        screen: Huang,
     }
-    dispatch(NavigationActions.back());
-    return true;
-  };
+}, 
+    StackNavigatorConfig({
+        initialRouteName: 'Home'
+    })
+);
 
-  render() {
-    const { dispatch, nav } = this.props;
-    const navigation = addNavigationHelpers({
-      dispatch,
-      state: nav,
-    });
-    return (
-      <MainScreen navigation={navigation} />
-    );
-  }
-}
+export default MainScreen;

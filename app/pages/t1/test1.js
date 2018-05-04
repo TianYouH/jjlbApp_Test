@@ -22,11 +22,16 @@ export class Test1 extends Component {
         this.state = {};
     }
 
+    goTo = () => {
+        const { navigation } = this.props;
+        navigation.navigate('Huang')
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <Text>点我</Text>
-                <FontAwesome.Button name="facebook" backgroundColor="#3b5998" >
+                <FontAwesome.Button onPress={() => this.goTo()} name="facebook" backgroundColor="#3b5998" >
                     <Text style={{fontFamily: 'Arial', fontSize: 15}}>你好世界</Text>
                 </FontAwesome.Button>
             </View>

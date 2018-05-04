@@ -15,7 +15,7 @@ import {
     Platform,
 } from 'react-native';
 
-import MainScreen from './router/router';
+import MainScreen from './router/index';
 
 @observer
 export default class App extends Component {
@@ -28,7 +28,7 @@ export default class App extends Component {
         return ( 
             <Provider {...stores}>
                 <MainScreen />
-            </Provider> 
+            </Provider>
         )
     }
 }
