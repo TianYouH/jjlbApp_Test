@@ -55,7 +55,7 @@ const MainScreen = StackNavigator({
         screen: TabScreen
     }
 }, {
-    initialRouteName: "TabScreen",
+    initialRouteName: "Home",
 });
 
 export default MainScreen;

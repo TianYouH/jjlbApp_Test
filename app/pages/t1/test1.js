@@ -9,7 +9,7 @@ import {
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export default class Test1 extends Component {
+export class Test1 extends Component {
 
     //导航栏数据配置
     static  navigationOptions = {
