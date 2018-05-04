@@ -4,7 +4,8 @@ import {
 
 import {
     TabNavigator,
-    StackNavigator
+    StackNavigator,
+    NavigationActions
 } from 'react-navigation';
 
 import {
@@ -81,16 +82,32 @@ const TabScreen = TabNavigator({
 );
 
 const MainScreen = StackNavigator({
-    Home: {
-        screen: TabScreen
+        Home: {
+            screen: TabScreen
+        },
+        Huang: {
+            screen: Huang,
+        }
     },
-    Huang: {
-        screen: Huang,
-    }
-}, 
     StackNavigatorConfig({
         initialRouteName: 'Home'
     })
 );
+
+const navigateOnce = (getStateForAction) => (action, state) => {
+    const {
+        type,
+        routeName
+    } = action;
+    console.log(state)
+    return (
+        state &&
+        type === NavigationActions.NAVIGATE &&
+        routeName !== 'Home' &&
+        routeName === state.routes[state.routes.length - 1].routeName
+    ) ? null : getStateForAction(action, state);
+};
+
+MainScreen.router.getStateForAction = navigateOnce(MainScreen.router.getStateForAction);
 
 export default MainScreen;

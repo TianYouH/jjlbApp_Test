@@ -24,10 +24,17 @@ export default class App extends Component {
         stores.appstore.init()
     }
 
+    navOnChange = (...data) => {
+        console.log()
+        console.log(this.navigation)
+    }
+
     render() {
         return ( 
             <Provider {...stores}>
-                <MainScreen />
+                <MainScreen 
+                    ref = {nav => this.navigation = nav}
+                    onNavigationStateChange={() => this.navOnChange()} />
             </Provider>
         )
     }
